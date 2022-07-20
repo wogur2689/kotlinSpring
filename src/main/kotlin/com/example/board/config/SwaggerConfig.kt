@@ -22,7 +22,7 @@ class SwaggerConfig {
     @Bean
     fun apiV1() : Docket? {
         version = "V1"
-        title = "hyeok API $version"
+        title = "kotlinSpringBoard API $version"
 
         var responseMessage = ArrayList<ResponseMessage>()
         responseMessage.add(
@@ -46,8 +46,8 @@ class SwaggerConfig {
         return Docket(DocumentationType.SWAGGER_2)
             .groupName(version!!)
             .select()
-            .apis(RequestHandlerSelectors.basePackage("com.example.swagger.controller"))
-            .paths(PathSelectors.ant("/v1/api/**"))
+            .apis(RequestHandlerSelectors.basePackage("com.example.board.controller"))
+            .paths(PathSelectors.ant("/**"))
             .build()
             .apiInfo(apiInfo(title!!, version!!))
             .globalResponseMessage(RequestMethod.GET, responseMessage)
